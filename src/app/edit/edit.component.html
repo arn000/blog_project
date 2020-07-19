@@ -1,0 +1,25 @@
+<div class="container">
+<h1>Edit Blog</h1>
+<br>
+	<form  [formGroup]="form">
+		<div class="form-group">
+			<label for="title">Title</label>
+			
+			<input id="title" type="text" name="title" class="form-control"   required  formControlName="title" [ngClass]="{'is-invalid': form.get('title').touched && form.get('title').invalid}" value="{{title}}" #titletext>
+			
+			<div class="invalid-feedback">
+			<div>Title is required</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="title">Text</label>
+			<textarea  #content type="text"  class="form-control" rows="10" required  formControlName="text" [ngClass]="{'is-invalid': form.get('text').touched && form.get('text').invalid}" value="{{text}}" ></textarea>
+			<div class="invalid-feedback">
+			<div>Text is required</div>
+			</div>
+		</div>
+		<div form-group>
+		<button type="button"  class="btn btn-primary"  (click)="editBlog(blogs,titletext,content)" [disabled]="!form.valid">Submit</button>
+		</div>
+	</form>
+</div>
